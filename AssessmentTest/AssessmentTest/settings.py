@@ -167,3 +167,7 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     )
 }
+
+# przechowywanie plików
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # my pc path - for server
+MEDIA_URL = '/media/' #browsable path - for users

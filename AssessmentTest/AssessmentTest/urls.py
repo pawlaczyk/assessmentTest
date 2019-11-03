@@ -13,6 +13,8 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path, re_path
 
@@ -20,6 +22,7 @@ from django.urls import include, path, re_path
 from django_registration.backends.one_step.views import RegistrationView
 
 from core.views import IndexTemplateView
+from documents.views import add_document
 from users.forms import CustomUserForm
 
 #do rejestracji po emailu
@@ -58,6 +61,14 @@ urlpatterns = [
     path("api/rest-auth/registration",
         include("rest_auth.registration.urls")),
 
+    # dokumenty
+    
+    path("add_document", add_document, name="add_document"),
+
     # wszystkie inne adresy
     re_path(r"^.*$", IndexTemplateView.as_view(), name="entry-point")
 ]
+
+if settings.DEBUG: #mozna zmienić później na produkcji
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
