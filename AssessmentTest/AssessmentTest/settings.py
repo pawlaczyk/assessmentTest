@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     
     'rest_framework',
     'rest_framework.authtoken',
+    'corsheaders',
 
     'allauth',
     'allauth.account',
@@ -55,6 +56,11 @@ INSTALLED_APPS = [
     'users',
     'documents', # main app
 ]
+
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:8081', # vue port
+    'http://localhost',
+)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
