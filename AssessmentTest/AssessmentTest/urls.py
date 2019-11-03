@@ -14,11 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import include, path, re_path
 
 # one_step - na razie opuszaczamy weryfikację email
 from django_registration.backends.one_step.views import RegistrationView
 
+from core.views import IndexTemplateView
 from users.forms import CustomUserForm
 
 #do rejestracji po emailu
@@ -41,6 +42,10 @@ urlpatterns = [
     path("accounts/",
         include("django.contrib.auth.urls")),
     
+    # urle z aplikacji `users`
+    path("api/",
+        include("users.api.urls")),
+    
     # login url for the browser API
     path("api-auth/",
         include("rest_framework.urls")),
@@ -52,4 +57,7 @@ urlpatterns = [
     # registration endpoint to use via rest
     path("api/rest-auth/registration",
         include("rest_auth.registration.urls")),
+
+    # wszystkie inne adresy
+    re_path(r"^.*$", IndexTemplateView.as_view(), name="entry-point")
 ]
