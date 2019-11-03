@@ -1,0 +1,16 @@
+########################## url backend ##########################
+1. Użytkownicy
+1.1 rejestracja
+1.2 logowanie
+
+2. Plik testu ( 1 plik - n zadań) //tylko zalogowani z uprawnieniami
+2.1 dodawanie nowego pliku (drop down)
+    - automatyczne id z nagłówka pliku/ wypełninaie przez użytkownika
+    - podział pliku graficznego na fragmenty (każdy fragment to treść jednego zadania i rozwiazanie)/ ręczne dzielenie pliku na fragmenty
+
+2.2 wyszukiwanie pliku
+2.3 dodawanie punktów do całego pliku
+2.4 dodawanie notki do całego pliku
+2.5 dodawanie punktów do pojedynczego zadania 
+2.6 dodawanie notki do pojedynczego zadania
+2.7 usuwanie pliku (czy tylko przez administratora[?]) //doprecyzować
